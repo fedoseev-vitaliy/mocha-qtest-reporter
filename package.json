@@ -1,6 +1,6 @@
 {
   "name": "mocha-qtest-reporter",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Mocha reporter for qTest",
   "main": "qTest_reporter.js",
   "scripts": {

@@ -1,9 +1,15 @@
 const mocha = require("mocha");
 const request = require("sync-request");
-const qTestConfig = require(process.cwd() + "/qTestConfig.json");
 
-module.exports = function qTestReporter (runner) {
+
+module.exports = function qTestReporter (runner, options) {
     mocha.reporters.Base.call(this, runner);
+    let qTestConfig;
+    try{
+        qTestConfig = options.reporterOptions.configOptions ? options.reporterOptions.configOptions : require(path.join(process.cwd(), options.reporterOptions.configFile));
+    } catch (err) {
+        console.error(`Failed to load config. Error: ${err}`);
+    }
 
     let test_log = {
         name: qTestConfig.name,
